@@ -76,26 +76,19 @@ end
 # Part 3  
 
 class BookInStock
-# YOUR CODE HERE
-  def initialize(_isbn, _price)  
-    # Instance variables
-    self.setIsbn(_isbn)  
-    self.setPrice(_price)
-  end  
-  
-  def getIsbn  
-    return self.isbn  
-  end  
-  
-  def setIsbn(_isbn) 
-    self.isbn = _isbn  
+
+  attr_accessor :isbn, :price
+
+  def initialize _isbn, _price
+    if (_price <= 0 || _isbn.empty?)
+      raise ArgumentError
+    end
+    @isbn = _isbn
+    @price = _price
   end
-  
-  def getPrice  
-    return self.price  
+
+  def price_as_string
+     return '$%.2f' % @price
   end
-  
-  def setPrice(_price)  
-    self.price = _price
-  end 
+
 end
